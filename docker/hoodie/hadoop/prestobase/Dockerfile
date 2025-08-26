@@ -18,11 +18,11 @@
 
 ## Presto docker setup is based on https://github.com/smizy/docker-presto
 
-ARG HADOOP_VERSION=2.8.4
-ARG HIVE_VERSION=2.3.3
-FROM apachehudi/hudi-hadoop_${HADOOP_VERSION}-base:latest as hadoop-base
+ARG HADOOP_VERSION=3.4.0
+ARG HIVE_VERSION=3.1.3
+FROM apachehudi/hudi-hadoop_${HADOOP_VERSION}-base:linux-arm64-1.0.2 as hadoop-base
 
-ARG PRESTO_VERSION=0.271
+ARG PRESTO_VERSION=0.287
 
 ENV PRESTO_VERSION       ${PRESTO_VERSION}
 ENV PRESTO_HOME          /opt/presto-server-${PRESTO_VERSION}
@@ -86,8 +86,8 @@ RUN  cp ${HUDI_PRESTO_BUNDLE} ${PRESTO_HOME}/plugin/hive-hadoop2/
 # so the hudi-presto-bundle build can be used solely for testing.  This temporary logic must be
 # removed once Presto has a new release depending on hudi-presto-bundle and we upgrade docker setup
 # to that release version.
-RUN rm ${PRESTO_HOME}/plugin/hive-hadoop2/hudi-common-*
-RUN rm ${PRESTO_HOME}/plugin/hive-hadoop2/hudi-hadoop-mr-*
+#RUN rm ${PRESTO_HOME}/plugin/hive-hadoop2/hudi-common-*
+#RUN rm ${PRESTO_HOME}/plugin/hive-hadoop2/hudi-hadoop-mr-*
 
 VOLUME ["${PRESTO_LOG_DIR}"]
 

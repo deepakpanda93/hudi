@@ -51,4 +51,4 @@ HIVE_JARS=$HIVE_METASTORE:$HIVE_SERVICE:$HIVE_EXEC:$HIVE_JDBC
 HADOOP_HIVE_JARS=${HIVE_JARS}:${HADOOP_HOME}/share/hadoop/common/*:${HADOOP_HOME}/share/hadoop/mapreduce/*:${HADOOP_HOME}/share/hadoop/hdfs/*:${HADOOP_HOME}/share/hadoop/common/lib/*:${HADOOP_HOME}/share/hadoop/hdfs/lib/*
 
 echo "Running Command : java -cp ${HUDI_CLASSPATH}:${HUDI_HIVE_UBER_JAR}:${HADOOP_HIVE_JARS}:${HADOOP_CONF_DIR}:$HUDI_HIVE_UBER_JAR org.apache.hudi.hive.HiveSyncTool $@"
-java -cp $HUDI_CLASSPATH:$HUDI_HIVE_UBER_JAR:${HADOOP_HIVE_JARS}:${HADOOP_CONF_DIR} org.apache.hudi.hive.HiveSyncTool "$@"
+java -cp $HUDI_CLASSPATH:$HUDI_HIVE_UBER_JAR:${HADOOP_HIVE_JARS}:${HADOOP_CONF_DIR}:/var/hoodie/ws/hudi-examples/hudi-examples-spark/target/lib/calcite-core-1.10.0.jar:/opt/hive/lib/libfb303-0.9.3.jar:/opt/caffeine-2.9.3.jar org.apache.hudi.hive.HiveSyncTool "$@"

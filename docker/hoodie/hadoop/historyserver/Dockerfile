@@ -15,11 +15,22 @@
 #  See the License for the specific language governing permissions and
 # limitations under the License.
 
-ARG HADOOP_VERSION=2.8.4 
+ARG HADOOP_VERSION=3.4.0 
 ARG HADOOP_HISTORY_PORT=8188
-FROM apachehudi/hudi-hadoop_${HADOOP_VERSION}-base:latest
+FROM apachehudi/hudi-hadoop_${HADOOP_VERSION}-base:linux-arm64-1.0.2
 
 ENV HADOOP_HISTORY_PORT ${HADOOP_HISTORY_PORT}
+
+# Copy the native .so to a directory in LD_LIBRARY_PATH
+COPY libleveldbjni.so /usr/lib/
+
+# Copy the JAR file into the Hadoop path or classpath
+COPY leveldbjni-linux64-aarch64-1.8.jar /opt/hadoop-${HADOOP_VERSION}/
+COPY leveldbjni-linux64-aarch64-1.8.jar /opt/hadoop-${HADOOP_VERSION}/share/hadoop/hdfs/lib/
+
+# Set environment variables for native lib
+ENV LD_LIBRARY_PATH="/usr/lib"
+ENV JAVA_LIBRARY_PATH="/usr/lib"
 
 ENV YARN_CONF_yarn_timeline___service_leveldb___timeline___store_path=/hadoop/yarn/timeline
 RUN mkdir -p /hadoop/yarn/timeline

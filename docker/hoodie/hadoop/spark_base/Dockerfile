@@ -15,9 +15,9 @@
 #  See the License for the specific language governing permissions and
 # limitations under the License.
 
-ARG HADOOP_VERSION=2.8.4
-ARG HIVE_VERSION=2.3.3
-FROM apachehudi/hudi-hadoop_${HADOOP_VERSION}-hive_${HIVE_VERSION}
+ARG HADOOP_VERSION=3.4.0
+ARG HIVE_VERSION=3.1.3
+FROM apachehudi/hudi-hadoop_${HADOOP_VERSION}-hive_${HIVE_VERSION}:linux-arm64-1.0.2
 
 ENV ENABLE_INIT_DAEMON true
 ENV INIT_DAEMON_BASE_URI http://identifier/init-daemon
@@ -45,6 +45,26 @@ RUN echo "Installing Spark-version (${SPARK_VERSION})" \
 RUN apt-get update \
     && apt-get -yq install python3 \
     && ln -sf $(which python3) /usr/bin/python \
+    && rm -rf /var/lib/apt/lists/*
+
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y \
+    wget build-essential libncursesw5-dev \
+    libssl-dev libgdbm-dev libreadline-dev libbz2-dev \
+    libsqlite3-dev libffi-dev zlib1g-dev \
+    && cd /usr/src \
+    && wget https://www.python.org/ftp/python/3.8.18/Python-3.8.18.tgz \
+    && tar xzf Python-3.8.18.tgz \
+    && cd Python-3.8.18 \
+    && ./configure --enable-optimizations \
+    && make -j"$(nproc)" \
+    && make altinstall \
+    && ln -sf /usr/local/bin/python3.8 /usr/bin/python \
+    && ln -sf /usr/local/bin/python3.8 /usr/bin/python3 \
+    && curl -sS https://bootstrap.pypa.io/pip/3.8/get-pip.py | python \
+    && pip install --upgrade pip \
+    && cd / && rm -rf /usr/src/Python-3.8.18* \
     && rm -rf /var/lib/apt/lists/*
 
 #Give permission to execute scripts
