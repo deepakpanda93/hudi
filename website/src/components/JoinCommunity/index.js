@@ -35,9 +35,9 @@ const JoinCommunity = () => {
     },
     {
       icon: TwitterIcon,
-      title: "Twitter",
+      title: "X",
       linkText: "Join community",
-      url: "https://twitter.com/ApacheHudi",
+      url: "https://x.com/ApacheHudi",
     },
     {
       icon: YoutubeIcon,

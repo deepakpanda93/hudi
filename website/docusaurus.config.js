@@ -202,10 +202,10 @@ module.exports = {
               label: "Tech Specs 1.0",
               href: "/tech-specs-1point0",
             },
-            {
+           /* {
               label: "Technical Wiki",
               href: "https://cwiki.apache.org/confluence/display/HUDI",
-            },
+            }, */
           ],
         },
         {
@@ -229,13 +229,13 @@ module.exports = {
               to: "/contribute/rfc-process",
             },
             {
-              label: "Report Security Issues",
+              label: "Report Issues",
               to: "/contribute/report-security-issues",
             },
-            {
+           /* {
               label: "Report Issues",
               href: "https://issues.apache.org/jira/projects/HUDI/summary",
-            },
+            }, */
           ],
         },
         {
@@ -268,7 +268,31 @@ module.exports = {
         { to: "/blog", label: "Blog", position: "left" },
         { to: "/powered-by", label: "Who's Using", position: "left" },
         { to: "/roadmap", label: "Roadmap", position: "left" },
-        { to: "/releases/download", label: "Download", position: "left" },
+        { to: "/releases/download", label: "Releases", position: "left" },
+
+	    {
+      	label: 'FAQs',
+      	position: 'left',
+      	items: [
+          /*{ type: 'doc', docId: 'faq', label: 'Overview' },
+          { type: 'doc', docId: 'faq_general', label: 'General' },
+          { type: 'doc', docId: 'faq_design_and_concepts', label: 'Design and Concepts' },
+          { type: 'doc', docId: 'faq_writing_tables', label: 'Writing Tables' },
+          { type: 'doc', docId: 'faq_reading_tables', label: 'Reading Tables' },
+          { type: 'doc', docId: 'faq_table_services', label: 'Table Services' },
+          { type: 'doc', docId: 'faq_storage', label: 'Storage' },
+          { type: 'doc', docId: 'faq_integrations', label: 'Integrations' },*/
+
+          { label: 'Overview', to: '/faqs/faq' },
+          { label: 'General', to: '/faqs/faq_general' },
+          { label: 'Design and Concepts', to: '/faqs/faq_design_and_concepts' },
+          { label: 'Writing Tables', to: '/faqs/faq_writing_tables' },
+          { label: 'Reading Tables', to: '/faqs/faq_reading_tables' },
+          { label: 'Table Services', to: '/faqs/faq_table_services' },
+          { label: 'Storage', to: '/faqs/faq_storage' },
+          { label: 'Integrations', to: '/faqs/faq_integrations' },
+        ],
+      },
         // right
         {
           type: "docsVersionDropdown",
@@ -294,7 +318,7 @@ module.exports = {
           "aria-label": "GitHub repository",
         },
         {
-          href: "https://twitter.com/ApacheHudi",
+          href: "https://x.com/ApacheHudi",
           position: "right",
           className: "header-twitter-link",
           "aria-label": "Hudi Twitter Handle",
@@ -425,8 +449,8 @@ module.exports = {
               href: "https://github.com/apache/hudi",
             },
             {
-              label: "Twitter",
-              href: "https://twitter.com/ApacheHudi",
+              label: "X",
+              href: "https://x.com/ApacheHudi",
             },
             {
               label: "YouTube",

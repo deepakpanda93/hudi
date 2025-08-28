@@ -1,5 +1,5 @@
 ---
-title: Download
+title: Releases
 sidebar_position: 1
 keywords: [ hudi, download]
 toc: true
