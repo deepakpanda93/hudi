@@ -878,7 +878,7 @@ Hudi provides the unique capability to obtain a set of records that changed betw
 record level [metadata tracking](https://hudi.apache.org/blog/2023/05/19/hudi-metafields-demystified).
 
 Below, we fetch changes since a given begin time while the end time defaults to the latest commit on the table. Users can also specify an
-end time using `END_INSTANTTIME.key()` option. 
+end time using `END_INSTANTTIME.key()` option. Note that the start commit time is exclusive, meaning only changes after the specified begin time are returned.
 
 <Tabs
 groupId="programming-language"
