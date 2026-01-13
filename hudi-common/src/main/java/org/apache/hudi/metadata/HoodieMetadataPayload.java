@@ -425,6 +425,7 @@ public class HoodieMetadataPayload implements HoodieRecordPayload<HoodieMetadata
           columnStatMetadata, recordIndexMetadata, secondaryIndexMetadata);
       return Option.of(record);
     } else {
+      LOG.info("ABCDEFGHI Schema" + schema.toString(true), new Exception());
       // Otherwise, the assumption is that the schema required contains the metadata fields so we construct a new GenericRecord with these fields
       GenericData.Record record = new GenericData.Record(schema);
       record.put(KEY_FIELD_OFFSET, key);
