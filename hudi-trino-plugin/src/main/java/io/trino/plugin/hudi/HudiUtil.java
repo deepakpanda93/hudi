@@ -17,7 +17,6 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.Weigher;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-
 import io.airlift.log.Logger;
 import io.trino.cache.EvictableCacheBuilder;
 import io.trino.filesystem.FileIterator;
@@ -37,7 +36,6 @@ import io.trino.spi.predicate.Domain;
 import io.trino.spi.predicate.NullableValue;
 import io.trino.spi.predicate.TupleDomain;
 import io.trino.spi.type.VarcharType;
-
 import org.apache.avro.Schema;
 import org.apache.avro.SchemaBuilder;
 import org.apache.hudi.common.engine.HoodieLocalEngineContext;
