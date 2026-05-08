@@ -18,6 +18,7 @@
 
 package org.apache.hudi.aws.sync;
 
+import org.apache.hudi.HoodieVersion;
 import org.apache.hudi.aws.credentials.HoodieAWSCredentialsProviderFactory;
 import org.apache.hudi.aws.sync.util.GluePartitionFilterGenerator;
 import org.apache.hudi.common.fs.FSUtils;
@@ -29,7 +30,6 @@ import org.apache.hudi.common.table.timeline.HoodieTimeline;
 import org.apache.hudi.common.util.CollectionUtils;
 import org.apache.hudi.common.util.CustomizedThreadFactory;
 import org.apache.hudi.common.util.HoodieTimer;
-import org.apache.hudi.common.util.HoodieVersion;
 import org.apache.hudi.common.util.Option;
 import org.apache.hudi.config.GlueCatalogSyncClientConfig;
 import org.apache.hudi.hadoop.utils.HoodieInputFormatUtils;
