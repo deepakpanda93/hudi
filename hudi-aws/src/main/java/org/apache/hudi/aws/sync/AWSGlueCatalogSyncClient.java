@@ -29,6 +29,7 @@ import org.apache.hudi.common.table.timeline.HoodieTimeline;
 import org.apache.hudi.common.util.CollectionUtils;
 import org.apache.hudi.common.util.CustomizedThreadFactory;
 import org.apache.hudi.common.util.HoodieTimer;
+import org.apache.hudi.common.util.HoodieVersion;
 import org.apache.hudi.common.util.Option;
 import org.apache.hudi.config.GlueCatalogSyncClientConfig;
 import org.apache.hudi.hadoop.utils.HoodieInputFormatUtils;
@@ -529,6 +530,21 @@ public class AWSGlueCatalogSyncClient extends HoodieSyncClient {
         throw new HoodieGlueSyncException("Fail to update table comments " + tableId(databaseName, table.name()), e);
       }
       return true;
+    }
+  }
+
+  @Override
+  public void updateHoodieWriterVersion(String tableName) {
+    try {
+      updateTableParameters(
+          awsGlue,
+          databaseName,
+          tableName,
+          Collections.singletonMap(HoodieVersion.HOODIE_WRITER_VERSION, HoodieVersion.get()),
+          skipTableArchive);
+    } catch (Exception e) {
+      throw new HoodieGlueSyncException(String.format("Failed to update hudi writer major version %s for %s",
+          HoodieVersion.get(), tableName), e);
     }
   }
 
